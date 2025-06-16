@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\ServerBackup;
 
 class BackupServer extends Model
 {
@@ -15,4 +16,9 @@ class BackupServer extends Model
         'path',
         'type',
     ];
+
+    public function backups()
+    {
+        return $this->hasMany(ServerBackup::class);
+    }
 }

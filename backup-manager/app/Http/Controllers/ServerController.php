@@ -31,7 +31,7 @@ class ServerController extends Controller
 
         Server::create($validated);
 
-        return redirect()->route('servers.index');
+        return redirect()->route('servers.index')->with('success', 'Server created');
     }
 
     public function edit(Server $server)
@@ -52,14 +52,14 @@ class ServerController extends Controller
 
         $server->update($validated);
 
-        return redirect()->route('servers.index');
+        return redirect()->route('servers.index')->with('success', 'Server updated');
     }
 
     public function destroy(Server $server)
     {
         $this->authorizeAction(['admin']);
         $server->delete();
-        return redirect()->route('servers.index');
+        return redirect()->route('servers.index')->with('success', 'Server deleted');
     }
 
     private function authorizeAction(array $roles)
