@@ -9,6 +9,7 @@ Backup Manager is a Laravel 10.x application used to register servers and plan t
 3. From the project directory run `composer install`.
 4. Copy `.env.example` to `.env` and adjust the database credentials.
 5. Run `php artisan key:generate` followed by `php artisan migrate`.
+6. No Node.js or Vite setup is needed; all assets load via CDN.
 
 ## Future Ideas
 
