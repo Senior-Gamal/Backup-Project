@@ -25,7 +25,17 @@ class ServerController extends Controller
         $validated = $request->validate([
             'hostname' => 'required',
             'ip' => 'required|ip',
+            'dns' => 'nullable',
+            'vnc' => 'nullable',
+            'control_panel' => 'nullable',
+            'backup_time' => 'nullable|date_format:H:i',
+            'username' => 'nullable',
+            'password' => 'nullable',
+            'license_reference' => 'nullable',
+            'node_group' => 'nullable',
+            'data_center' => 'nullable',
             'timezone' => 'required',
+            'notes' => 'nullable',
         ]);
 
         Server::create($validated);
@@ -46,7 +56,17 @@ class ServerController extends Controller
         $validated = $request->validate([
             'hostname' => 'required',
             'ip' => 'required|ip',
+            'dns' => 'nullable',
+            'vnc' => 'nullable',
+            'control_panel' => 'nullable',
+            'backup_time' => 'nullable|date_format:H:i',
+            'username' => 'nullable',
+            'password' => 'nullable',
+            'license_reference' => 'nullable',
+            'node_group' => 'nullable',
+            'data_center' => 'nullable',
             'timezone' => 'required',
+            'notes' => 'nullable',
         ]);
 
         $server->update($validated);
