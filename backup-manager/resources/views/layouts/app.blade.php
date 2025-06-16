@@ -18,7 +18,15 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav me-auto">
                         @auth
+                        <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('servers.index') }}">Servers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('backup-servers.index') }}">Backup Servers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('server-backups.index') }}">Backup Assignments</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('licenses.index') }}">Licenses</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('license-groups.index') }}">License Groups</a></li>
+                        @if(Auth::user()->role === 'admin')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}">Users</a></li>
+                        @endif
                         @endauth
                     </ul>
                     <ul class="navbar-nav ms-auto">
@@ -43,6 +51,20 @@
             </div>
         </nav>
         <main class="py-4">
+            <div class="container">
+                @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
             @yield('content')
         </main>
     </div>
