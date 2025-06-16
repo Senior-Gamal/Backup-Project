@@ -1,18 +1,13 @@
 # Backup Manager
 
-Backup Manager is a Laravel 10.x application used to register servers and plan their backup schedules. It does **not** execute any backups – it only stores information about where and when backups should occur.
+A Laravel based system to manage and schedule backups. This project is designed for deployment on shared hosting without Node or npm.
 
-## Installation (cPanel)
+## Features
+- Manage servers and backup servers
+- Schedule internal and external backups
+- Assign backup servers
+- Track backup configuration per server
+- Manage licenses and groups
+- Role based access (admin, manager, viewer)
 
-1. Upload the repository files to your cPanel account.
-2. Ensure PHP 8.1+ and Composer are available.
-3. From the project directory run `composer install`.
-4. Copy `.env.example` to `.env` and adjust the database credentials.
-5. Run `php artisan key:generate` followed by `php artisan migrate`.
-6. No Node.js or Vite setup is needed; all assets load via CDN.
-
-## Future Ideas
-
-- API endpoints to update server information remotely.
-- Cron automation to push schedules to external backup scripts.
-- Integration with monitoring tools for license expiration alerts.
+Detailed specification is available in the `docs/specification.md` file.
