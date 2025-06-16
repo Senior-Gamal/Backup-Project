@@ -1,30 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
-</head>
-<body>
-<div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Servers</h1>
-    <table class="min-w-full bg-white">
-        <thead>
+@extends('layouts.app')
+
+@section('content')
+<div class="container py-4">
+    <h1 class="mb-4">Servers Dashboard</h1>
+    <table class="table table-bordered">
+        <thead class="table-light">
             <tr>
-                <th class="px-4 py-2">Hostname</th>
-                <th class="px-4 py-2">IP</th>
-                <th class="px-4 py-2">Timezone</th>
+                <th>ID</th>
+                <th>Hostname</th>
+                <th>IP Address</th>
+                <th>Timezone</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($servers as $server)
-            <tr class="border-t">
-                <td class="px-4 py-2">{{ $server->hostname }}</td>
-                <td class="px-4 py-2">{{ $server->ip }}</td>
-                <td class="px-4 py-2">{{ $server->timezone }}</td>
+        @forelse($servers as $server)
+            <tr>
+                <td>{{ $server->id }}</td>
+                <td>{{ $server->hostname }}</td>
+                <td>{{ $server->ip_address ?? $server->ip }}</td>
+                <td>{{ $server->timezone }}</td>
             </tr>
-            @endforeach
+        @empty
+            <tr><td colspan="4" class="text-center">No servers added yet</td></tr>
+        @endforelse
         </tbody>
     </table>
 </div>
-</body>
-</html>
+@endsection
