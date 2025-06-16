@@ -15,8 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('hostname');
             $table->string('ip');
+            $table->string('dns')->nullable();
             $table->string('vnc')->nullable();
             $table->string('control_panel')->nullable();
+            $table->time('backup_time')->nullable();
+            $table->string('username')->nullable();
+            $table->string('password')->nullable();
+            $table->string('license_reference')->nullable();
+            $table->string('node_group')->nullable();
+            $table->string('data_center')->nullable();
             $table->string('timezone')->default('UTC');
             $table->text('notes')->nullable();
             $table->timestamps();

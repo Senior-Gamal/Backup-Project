@@ -14,8 +14,15 @@ class Server extends Model
     protected $fillable = [
         'hostname',
         'ip',
+        'dns',
         'vnc',
         'control_panel',
+        'backup_time',
+        'username',
+        'password',
+        'license_reference',
+        'node_group',
+        'data_center',
         'timezone',
         'notes',
     ];
