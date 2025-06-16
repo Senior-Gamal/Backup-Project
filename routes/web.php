@@ -13,6 +13,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
     Route::get('/servers', [App\Http\Controllers\ServerController::class, 'index'])->name('servers.index');
+    Route::get('/servers/create', [App\Http\Controllers\ServerController::class, 'create'])->name('servers.create');
+    Route::post('/servers', [App\Http\Controllers\ServerController::class, 'store'])->name('servers.store');
 
     Route::get('/clients-servers', [App\Http\Controllers\ClientServerController::class, 'index'])->name('client-servers.index');
 
