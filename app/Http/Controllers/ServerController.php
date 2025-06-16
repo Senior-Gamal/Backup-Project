@@ -10,6 +10,7 @@ class ServerController extends Controller
 
     public function index()
     {
-        return view('servers.index');
+        $servers = \App\Models\Server::all();
+        return view('servers.index', compact('servers'));
     }
 }

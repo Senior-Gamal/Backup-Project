@@ -10,6 +10,7 @@ class LicenseController extends Controller
 
     public function index()
     {
-        return view('licenses.index');
+        $licenses = \App\Models\License::all();
+        return view('licenses.index', compact('licenses'));
     }
 }

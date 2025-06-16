@@ -10,6 +10,7 @@ class LicenseGroupController extends Controller
 
     public function index()
     {
-        return view('license-groups.index');
+        $licenseGroups = \App\Models\LicenseGroup::all();
+        return view('license-groups.index', compact('licenseGroups'));
     }
 }

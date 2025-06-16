@@ -10,6 +10,7 @@ class ServerBackupController extends Controller
 
     public function index()
     {
-        return view('server-backups.index');
+        $serverBackups = \App\Models\ServerBackup::with(['server', 'backupServer'])->get();
+        return view('server-backups.index', compact('serverBackups'));
     }
 }

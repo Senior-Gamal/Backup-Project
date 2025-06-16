@@ -23,6 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $serverCount = \App\Models\Server::count();
+        $clientServerCount = \App\Models\ClientServer::count();
+        $userCount = \App\Models\User::count();
+
+        return view('home', [
+            'serverCount' => $serverCount,
+            'clientServerCount' => $clientServerCount,
+            'userCount' => $userCount,
+        ]);
     }
 }

@@ -10,6 +10,7 @@ class ClientServerController extends Controller
 
     public function index()
     {
-        return view('client-servers.index');
+        $clientServers = \App\Models\ClientServer::all();
+        return view('client-servers.index', compact('clientServers'));
     }
 }

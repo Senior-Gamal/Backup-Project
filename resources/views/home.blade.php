@@ -15,6 +15,12 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <div class="mt-3">
+                        <p>Servers: {{ $serverCount }}</p>
+                        <p>Client Servers: {{ $clientServerCount }}</p>
+                        <p>Users: {{ $userCount }}</p>
+                    </div>
                 </div>
             </div>
         </div>
