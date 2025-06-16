@@ -3,6 +3,10 @@
 @section('content')
 <div class="container">
     <h1>Licenses</h1>
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+    <a href="{{ route('licenses.create') }}" class="btn btn-primary mb-3">Add License</a>
     <table class="table table-bordered">
         <thead>
             <tr>
