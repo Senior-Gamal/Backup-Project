@@ -5,7 +5,6 @@ use App\Models\ServerBackup;
 use App\Models\Server;
 use App\Models\BackupServer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ServerBackupController extends Controller
 {
@@ -17,7 +16,6 @@ class ServerBackupController extends Controller
 
     public function create()
     {
-        $this->authorizeAction(['admin', 'manager']);
         $servers = Server::all();
         $backupServers = BackupServer::all();
         return view('server_backups.create', compact('servers', 'backupServers'));
@@ -25,7 +23,6 @@ class ServerBackupController extends Controller
 
     public function store(Request $request)
     {
-        $this->authorizeAction(['admin', 'manager']);
 
         $validated = $request->validate([
             'server_id' => 'required|exists:servers,id',
@@ -41,7 +38,6 @@ class ServerBackupController extends Controller
 
     public function edit(ServerBackup $serverBackup)
     {
-        $this->authorizeAction(['admin', 'manager']);
         $servers = Server::all();
         $backupServers = BackupServer::all();
         return view('server_backups.edit', compact('serverBackup', 'servers', 'backupServers'));
@@ -49,7 +45,6 @@ class ServerBackupController extends Controller
 
     public function update(Request $request, ServerBackup $serverBackup)
     {
-        $this->authorizeAction(['admin', 'manager']);
 
         $validated = $request->validate([
             'server_id' => 'required|exists:servers,id',
@@ -65,15 +60,8 @@ class ServerBackupController extends Controller
 
     public function destroy(ServerBackup $serverBackup)
     {
-        $this->authorizeAction(['admin']);
         $serverBackup->delete();
         return redirect()->route('server-backups.index')->with('success', 'Assignment deleted');
     }
 
-    private function authorizeAction(array $roles)
-    {
-        if (!in_array(Auth::user()->role, $roles)) {
-            abort(403);
-        }
-    }
 }
