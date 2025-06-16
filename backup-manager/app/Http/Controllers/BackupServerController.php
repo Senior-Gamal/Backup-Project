@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 use App\Models\BackupServer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class BackupServerController extends Controller
 {
@@ -15,13 +14,11 @@ class BackupServerController extends Controller
 
     public function create()
     {
-        $this->authorizeAction(['admin', 'manager']);
         return view('backup_servers.create');
     }
 
     public function store(Request $request)
     {
-        $this->authorizeAction(['admin', 'manager']);
 
         $validated = $request->validate([
             'name' => 'required',
@@ -36,13 +33,11 @@ class BackupServerController extends Controller
 
     public function edit(BackupServer $backupServer)
     {
-        $this->authorizeAction(['admin', 'manager']);
         return view('backup_servers.edit', compact('backupServer'));
     }
 
     public function update(Request $request, BackupServer $backupServer)
     {
-        $this->authorizeAction(['admin', 'manager']);
 
         $validated = $request->validate([
             'name' => 'required',
@@ -57,15 +52,8 @@ class BackupServerController extends Controller
 
     public function destroy(BackupServer $backupServer)
     {
-        $this->authorizeAction(['admin']);
         $backupServer->delete();
         return redirect()->route('backup-servers.index')->with('success', 'Backup server deleted');
     }
 
-    private function authorizeAction(array $roles)
-    {
-        if (!in_array(Auth::user()->role, $roles)) {
-            abort(403);
-        }
-    }
 }
