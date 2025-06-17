@@ -1,14 +1,5 @@
 # Backup Manager
 
-A Laravel based system to manage and schedule backups. This project is designed for deployment on shared hosting without Node or npm.
+This repository contains a fresh Laravel project skeleton for managing backup configuration across multiple servers. The previous code was removed due to numerous errors. See `docs/specification.md` for the full functional specification.
 
-## Features
-- Manage servers and backup servers
-- Schedule internal and external backups
-- Assign backup servers
-- Track backup configuration per server
-- Manage licenses and groups
-- Role based access (admin, manager, viewer)
-- Basic list views for servers, backup servers, backups, licenses, groups, and users
-
-Detailed specification is available in the `docs/specification.md` file.
+This project targets shared hosting (cPanel) and does not require Node.js or npm.
