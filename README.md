@@ -2,6 +2,15 @@
 
 A Laravel based system to manage and schedule backups. This project is designed for deployment on shared hosting without Node or npm.
 
+## Setup
+
+```bash
+composer install
+cd app
+php artisan migrate --seed
+php artisan serve
+```
+
 ## Features
 - Manage servers and backup servers
 - Schedule internal and external backups
