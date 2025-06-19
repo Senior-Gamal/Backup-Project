@@ -5,8 +5,11 @@ A Laravel based system to manage and schedule backups. This project is designed 
 ## Setup
 
 ```bash
-composer install
 cd app
+composer install
+cp .env.example .env
+php artisan key:generate
+touch database/database.sqlite
 php artisan migrate --seed
 php artisan serve
 ```
