@@ -19,4 +19,25 @@ class BackupServerTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('server1');
     }
+
+    public function test_server_can_be_created_and_updated_and_deleted(): void
+    {
+        $response = $this->post('/backupservers', [
+            'hostname' => 'srv',
+            'ip_address' => '1.1.1.1',
+            'timezone' => 'UTC',
+        ]);
+        $response->assertRedirect('/backupservers');
+
+        $server = BackupServer::first();
+        $this->put("/backupservers/{$server->id}", [
+            'hostname' => 'srv2',
+            'ip_address' => '1.1.1.1',
+            'timezone' => 'UTC',
+        ])->assertRedirect('/backupservers');
+
+        $this->delete("/backupservers/{$server->id}")->assertRedirect('/backupservers');
+
+        $this->assertDatabaseMissing('backup_servers', ['id' => $server->id]);
+    }
 }

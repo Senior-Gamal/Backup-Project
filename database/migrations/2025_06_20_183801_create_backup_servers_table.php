@@ -21,6 +21,11 @@ return new class extends Migration
             $table->string('license_group')->nullable();
             $table->string('license')->nullable();
             $table->boolean('internal_backup')->default(false);
+            $table->string('secret_code')->nullable();
+            $table->string('node_group')->nullable();
+            $table->string('datacenter')->nullable();
+            $table->string('client_number')->nullable();
+            $table->date('last_data_update')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
         });

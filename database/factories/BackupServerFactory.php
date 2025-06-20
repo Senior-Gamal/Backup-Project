@@ -23,6 +23,11 @@ class BackupServerFactory extends Factory
             'license_group' => 'default',
             'license' => 'trial',
             'internal_backup' => $this->faker->boolean,
+            'secret_code' => $this->faker->bothify('code-####'),
+            'node_group' => 'default',
+            'datacenter' => 'dc1',
+            'client_number' => $this->faker->randomNumber(4),
+            'last_data_update' => $this->faker->date(),
             'notes' => $this->faker->sentence,
         ];
     }

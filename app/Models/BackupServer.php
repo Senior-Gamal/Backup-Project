@@ -21,6 +21,11 @@ class BackupServer extends Model
         'license_group',
         'license',
         'internal_backup',
+        'secret_code',
+        'node_group',
+        'datacenter',
+        'client_number',
+        'last_data_update',
         'notes',
     ];
 }
