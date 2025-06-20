@@ -23,15 +23,4 @@ Backup Manager is an organizational tool built in Laravel for scheduling and man
 - **Server Settings**
 - **System Settings**
 
-The Laravel project resides at the repository root.
-Copy `.env.example` to `.env` and adjust database credentials as needed.
 
-## Development Setup
-
-1. Copy `.env.example` to `.env` and configure your MySQL credentials.
-2. Run `composer install` to install PHP dependencies.
-3. Run `php artisan key:generate` to set the application key.
-4. Run `php artisan migrate` to create the database tables including `backup_servers`.
-
-After these steps, visit `/backupservers` to manage backup server entries. You
-can create, edit, and delete servers from this interface.
