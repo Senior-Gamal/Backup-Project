@@ -2,6 +2,7 @@
 
 Backup Manager is an organizational tool built in Laravel for scheduling and managing backup configurations across multiple servers. The system is intended for shared hosting environments (cPanel) and does not execute actual backup operations.
 
+This project ships with precompiled frontend assets, so Node.js or npm is not required for setup.
 ## Features
 
 - Schedule internal, external, database, and NAS backups
