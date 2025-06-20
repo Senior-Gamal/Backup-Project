@@ -1,10 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
 use App\Http\Controllers\BackupServerController;
+
+Route::redirect('/', '/backupservers');
 
 Route::resource('backupservers', BackupServerController::class);
