@@ -23,4 +23,4 @@ Backup Manager is an organizational tool built in Laravel for scheduling and man
 - **Server Settings**
 - **System Settings**
 
-This repository currently contains only the source control history. Future updates will include the Laravel codebase implementing the features described above.
+The Laravel project is located in the `backup-manager` directory.
