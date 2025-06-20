@@ -26,6 +26,9 @@ Backup Manager is an organizational tool built in Laravel for scheduling and man
 The Laravel project resides at the repository root.
 Copy `.env.example` to `.env` and adjust database credentials as needed.
 
+The `/` route redirects to `/login`, which shows the login form. After logging in,
+you will be taken to the dashboard.
+
 ## Development Setup
 
 1. Copy `.env.example` to `.env` and configure your MySQL credentials.
