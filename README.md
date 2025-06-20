@@ -23,4 +23,14 @@ Backup Manager is an organizational tool built in Laravel for scheduling and man
 - **Server Settings**
 - **System Settings**
 
+## Development Server
+
+The project is located in this repository's root directory (not in the `backup-manager` folder). To start the local server run:
+
+```bash
+php artisan serve
+```
+
+Visit <http://localhost:8000/backupservers> to access the interface.
+
 
