@@ -13,7 +13,7 @@ class ViewerAccessTest extends TestCase
 
     public function test_viewer_cannot_access_dashboard(): void
     {
-        $viewer = User::factory()->create(['email' => 'viewer@example.com']);
+        $viewer = User::factory()->viewer()->create(['email' => 'viewer@example.com']);
         $this->actingAs($viewer);
 
         $this->get('/dashboard')->assertForbidden();
@@ -21,7 +21,7 @@ class ViewerAccessTest extends TestCase
 
     public function test_viewer_cannot_access_backupservers_crud(): void
     {
-        $viewer = User::factory()->create(['email' => 'viewer@example.com']);
+        $viewer = User::factory()->viewer()->create(['email' => 'viewer@example.com']);
         $this->actingAs($viewer);
 
         $this->get('/backupservers')->assertForbidden();
