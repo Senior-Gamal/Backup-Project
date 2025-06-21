@@ -14,6 +14,7 @@ class BackupServerTest extends TestCase
     {
         BackupServer::factory()->create(['hostname' => 'server1']);
 
+        $this->actingAs(\App\Models\User::factory()->create());
         $response = $this->get('/backupservers');
 
         $response->assertStatus(200);
@@ -22,6 +23,7 @@ class BackupServerTest extends TestCase
 
     public function test_server_can_be_created_and_updated_and_deleted(): void
     {
+        $this->actingAs(\App\Models\User::factory()->create());
         $response = $this->post('/backupservers', [
             'hostname' => 'srv',
             'ip_address' => '1.1.1.1',

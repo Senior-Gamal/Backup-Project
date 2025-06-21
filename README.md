@@ -61,3 +61,17 @@ datasets similar to TinyStories. It looks for a JSONL file at
 `data/tiny_stories.jsonl` and prints some basic statistics about text length
 distribution. If the optional `datasets` Python package is installed, the script
 can also download the `djik/TinyStories-12k` dataset automatically.
+
+## Updating the Project
+
+To update your local copy from the command line run:
+
+```bash
+git pull
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+```
+
+Then start the server with `php artisan serve`.
