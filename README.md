@@ -1,16 +1,17 @@
 # Backup Manager
 
-Backup Manager is an organizational tool built in Laravel for scheduling and managing backup configurations across multiple servers. The system is intended for shared hosting environments (cPanel) and does not execute actual backup operations.
+Backup Manager is an organizational tool built in Laravel for scheduling and managing backup configurations across multiple servers. The system targets shared hosting environments (cPanel) and does **not** execute real backups.
 
-## Features
+This project ships with precompiled assets so Node.js or npm is not required.
 
-- Schedule internal, external, database, and NAS backups
-- Assign backup servers and track backup settings for each server
+
+- Schedule internal, external, database and NAS backups
+- Assign backup servers and track backup settings
 - Group licenses and associate them with servers
-- Role-based access control (admin, manager, viewer, custom roles)
+- Role based access control (admin, manager, viewer, custom roles)
 - Assign users to specific servers or clients
-- Highlight conflicting backup times to avoid scheduling conflicts
-- Dashboard with statistics and upcoming backup indicators
+- Highlight conflicting backup times
+- Dashboard with statistics and upcoming indicators
 
 ## Menu Structure
 
@@ -23,11 +24,19 @@ Backup Manager is an organizational tool built in Laravel for scheduling and man
 - **Server Settings**
 - **System Settings**
 
-The Laravel project resides at the repository root.
-Copy `.env.example` to `.env` and adjust database credentials as needed.
+## Setup
+1. Copy `.env.example` to `.env` and update the database credentials.
+2. Set `APP_KEY` with `php artisan key:generate` or use the provided key.
+3. Run database migrations and seeders:
 
+php artisan migrate --seed
+## Development Server
 
+Start the local server with:
 ```bash
+php artisan serve
+```
+Then visit <http://localhost:8000/backupservers>.
 php artisan db:seed
 ```
 
