@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BackupServer;
+use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 
 class BackupServerController extends Controller
@@ -21,7 +22,11 @@ class BackupServerController extends Controller
     public function store(Request $request)
     {
         $data = $this->validateData($request);
-        BackupServer::create($data);
+        $server = BackupServer::create($data);
+        ActivityLog::create([
+            'user_id' => $request->user()->id,
+            'action' => "Created backup server {$server->hostname}",
+        ]);
         return redirect()->route('backupservers.index');
     }
 
@@ -34,12 +39,21 @@ class BackupServerController extends Controller
     {
         $data = $this->validateData($request);
         $backupserver->update($data);
+        ActivityLog::create([
+            'user_id' => $request->user()->id,
+            'action' => "Updated backup server {$backupserver->hostname}",
+        ]);
         return redirect()->route('backupservers.index');
     }
 
     public function destroy(BackupServer $backupserver)
     {
+        $name = $backupserver->hostname;
         $backupserver->delete();
+        ActivityLog::create([
+            'user_id' => auth()->id(),
+            'action' => "Deleted backup server {$name}",
+        ]);
         return redirect()->route('backupservers.index');
     }
 
