@@ -48,10 +48,20 @@ class User extends Authenticatable
     }
 
     /**
-     * Determine if the user is a viewer.
+     * Role helpers
      */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isManager(): bool
+    {
+        return $this->role === 'manager';
+    }
+
     public function isViewer(): bool
     {
-        return str_contains($this->email, 'viewer');
+        return $this->role === 'viewer';
     }
 }
