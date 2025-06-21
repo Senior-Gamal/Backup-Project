@@ -12,6 +12,8 @@ class BackupServerTest extends TestCase
 
     public function test_index_displays_backup_servers(): void
     {
+        $user = \App\Models\User::factory()->create(['role' => 'admin']);
+        $this->actingAs($user);
         BackupServer::factory()->create(['hostname' => 'server1']);
 
         $response = $this->get('/backupservers');
@@ -22,6 +24,8 @@ class BackupServerTest extends TestCase
 
     public function test_server_can_be_created_and_updated_and_deleted(): void
     {
+        $user = \App\Models\User::factory()->create(['role' => 'admin']);
+        $this->actingAs($user);
         $response = $this->post('/backupservers', [
             'hostname' => 'srv',
             'ip_address' => '1.1.1.1',
