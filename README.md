@@ -2,7 +2,6 @@
 
 Backup Manager is an organizational tool built in Laravel for scheduling and managing backup configurations across multiple servers. The system is intended for shared hosting environments (cPanel) and does not execute actual backup operations.
 
-This project ships with precompiled frontend assets, so Node.js or npm is not required for setup.
 ## Features
 
 - Schedule internal, external, database, and NAS backups
@@ -24,14 +23,39 @@ This project ships with precompiled frontend assets, so Node.js or npm is not re
 - **Server Settings**
 - **System Settings**
 
-## Development Server
+The Laravel project resides at the repository root.
+Copy `.env.example` to `.env` and adjust database credentials as needed.
 
-The project is located in this repository's root directory. Earlier revisions contained a nested `backup-manager` folder, which has now been removed to simplify deployment. To start the local server run:
 
 ```bash
-php artisan serve
+php artisan db:seed
 ```
 
-Visit <http://localhost:8000/backupservers> to access the interface.
+You can then log in at `/login` using:
 
+- **Email:** `admin@example.com`
+- **Password:** `password`
 
+Once logged in, access the dashboard at `/dashboard`.
+
+## Dataset Analysis Helper
+
+The repository includes a small script `analyze_dataset.py` for inspecting
+datasets similar to TinyStories. It looks for a JSONL file at
+`data/tiny_stories.jsonl` and prints some basic statistics about text length
+distribution. If the optional `datasets` Python package is installed, the script
+can also download the `djik/TinyStories-12k` dataset automatically.
+
+## Updating the Project
+
+To update your local copy from the command line run:
+
+```bash
+git pull
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+```
+
+Then start the server with `php artisan serve`.
