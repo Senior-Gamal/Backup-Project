@@ -7,10 +7,12 @@ This project ships with precompiled assets so Node.js or npm is not required.
 
 - Schedule internal, external, database and NAS backups
 - Assign backup servers and track backup settings
+- Manage client servers with simple CRUD screens
 - Group licenses and associate them with servers
 - Role based access control (admin, manager, viewer, custom roles)
 - Assign users to specific servers or clients
 - Highlight conflicting backup times
+- Track user activity logs
 - Dashboard with statistics and upcoming indicators
 
 ## Menu Structure
