@@ -26,7 +26,7 @@ This project ships with precompiled frontend assets, so Node.js or npm is not re
 
 ## Development Server
 
-The project is located in this repository's root directory (not in the `backup-manager` folder). To start the local server run:
+The project is located in this repository's root directory. Earlier revisions contained a nested `backup-manager` folder, which has now been removed to simplify deployment. To start the local server run:
 
 ```bash
 php artisan serve
