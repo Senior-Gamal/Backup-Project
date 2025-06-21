@@ -25,11 +25,13 @@ This project ships with precompiled assets so Node.js or npm is not required.
 - **System Settings**
 
 ## Setup
-1. Copy `.env.example` to `.env` and update the database credentials.
-2. Set `APP_KEY` with `php artisan key:generate` or use the provided key.
-3. Run database migrations and seeders:
+1. Run `composer install` to install dependencies. This copies `.env.example` to `.env` if needed.
+2. If `APP_KEY` is missing, run `php artisan key:generate`.
+3. Update database credentials in `.env`.
+4. Run database migrations and seeders:
 
 php artisan migrate --seed
+If you see `Illuminate\Encryption\MissingAppKeyException`, ensure `.env` exists and contains an `APP_KEY`, then run `php artisan config:clear`.
 ## Development Server
 
 Start the local server with:
