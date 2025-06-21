@@ -24,5 +24,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('access-admin-sections', function (User $user) {
             return ! $user->isViewer();
         });
+
+        Gate::define('manage-resources', function (User $user) {
+            return $user->isAdmin() || $user->isManager();
+        });
     }
 }
