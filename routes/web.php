@@ -16,5 +16,6 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::resource('backupservers', BackupServerController::class);
+    Route::resource('backupservers', BackupServerController::class)
+        ->middleware('role:admin');
 });
