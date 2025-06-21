@@ -45,4 +45,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Determine if the user is a viewer.
+     */
+    public function isViewer(): bool
+    {
+        return str_contains($this->email, 'viewer');
+    }
 }
