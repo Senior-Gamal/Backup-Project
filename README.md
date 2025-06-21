@@ -26,7 +26,7 @@ This project ships with precompiled assets so Node.js or npm is not required.
 
 ## Setup
 1. Copy `.env.example` to `.env` and update the database credentials.
-2. Set `APP_KEY` with `php artisan key:generate` or use the provided key.
+2. Run `php artisan key:generate` to set `APP_KEY`.
 3. Run database migrations and seeders:
 
 php artisan migrate --seed
