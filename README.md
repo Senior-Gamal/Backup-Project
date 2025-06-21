@@ -1,17 +1,18 @@
 # Backup Manager
 
-Backup Manager is an organizational tool built in Laravel for scheduling and managing backup configurations across multiple servers. The system is intended for shared hosting environments (cPanel) and does not execute actual backup operations.
+Backup Manager is an organizational tool built in Laravel for scheduling and managing backup configurations across multiple servers. The system targets shared hosting environments (cPanel) and does **not** execute real backups.
 
-This project ships with precompiled frontend assets, so Node.js or npm is not required for setup.
+This project ships with precompiled assets so Node.js or npm is not required.
+
 ## Features
 
-- Schedule internal, external, database, and NAS backups
-- Assign backup servers and track backup settings for each server
+- Schedule internal, external, database and NAS backups
+- Assign backup servers and track backup settings
 - Group licenses and associate them with servers
-- Role-based access control (admin, manager, viewer, custom roles)
+- Role based access control (admin, manager, viewer, custom roles)
 - Assign users to specific servers or clients
-- Highlight conflicting backup times to avoid scheduling conflicts
-- Dashboard with statistics and upcoming backup indicators
+- Highlight conflicting backup times
+- Dashboard with statistics and upcoming indicators
 
 ## Menu Structure
 
@@ -24,14 +25,31 @@ This project ships with precompiled frontend assets, so Node.js or npm is not re
 - **Server Settings**
 - **System Settings**
 
+## Setup
+
+1. Run `composer install` to install dependencies. This copies `.env.example` to `.env` if needed.
+2. If `APP_KEY` is missing, run `php artisan key:generate`.
+3. Update database credentials in `.env`.
+4. Run database migrations and seeders:
+
+```bash
+php artisan migrate --seed
+```
+If you see `Illuminate\Encryption\MissingAppKeyException`, ensure `.env` exists and contains an `APP_KEY`, then run `php artisan config:clear`.
+
 ## Development Server
 
-The project is located in this repository's root directory (not in the `backup-manager` folder). To start the local server run:
+After seeding, a default admin user is available:
+
+```
+Email: admin@example.com
+Password: password
+```
+
+Start the local server with:
 
 ```bash
 php artisan serve
 ```
 
-Visit <http://localhost:8000/backupservers> to access the interface.
-
-
+Then visit <http://localhost:8000/login> and sign in.
