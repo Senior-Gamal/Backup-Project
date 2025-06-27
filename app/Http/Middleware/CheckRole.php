@@ -10,12 +10,11 @@ class CheckRole
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, string $role): Response
+    public function handle(Request $request, Closure $next, string $roles): Response
     {
-        if (!$request->user() || $request->user()->role !== $role) {
+        $allowed = array_map('trim', preg_split('/[|,]/', $roles));
+        if (! $request->user() || ! in_array($request->user()->role, $allowed)) {
             abort(403);
         }
 
