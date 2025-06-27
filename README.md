@@ -3,6 +3,8 @@
 Backup Manager is an organizational tool built in Laravel for scheduling and managing backup configurations across multiple servers. The system targets shared hosting environments (cPanel) and does **not** execute real backups.
 
 This project ships with precompiled assets so Node.js or npm is not required.
+The Tailwind CSS file is already built at `public/css/tailwind.css`, allowing the
+dashboard to load styling without using an external CDN.
 
 
 - Schedule internal, external, database and NAS backups
@@ -13,6 +15,7 @@ This project ships with precompiled assets so Node.js or npm is not required.
 - Assign users to specific servers or clients
 - Highlight conflicting backup times
 - Track user activity logs
+- Schedule backups with conflict detection
 - Dashboard with statistics and upcoming indicators
 
 ## Menu Structure
@@ -70,3 +73,8 @@ php artisan migrate --seed
 ```
 
 Then start the server with `php artisan serve`.
+
+## Default Admin Credentials
+
+- Email: admin@example.com
+- Password: 123456
